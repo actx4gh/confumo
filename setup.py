@@ -7,7 +7,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='confumo',
-    version='0.1.0',
+    version='0.1.1',
     description='Platform-aware configuration management for Python applications',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
