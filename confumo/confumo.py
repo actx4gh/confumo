@@ -45,6 +45,15 @@ class Confumo(SingletonBase):
         self.args = self._parse_args(additional_args=self.additional_args)
         self.config = self._initialize_configuration()
 
+    def _get_platform_name(self) -> str:
+        """
+        Get the name of the current platform.
+
+        :return: Name of the platform
+        :rtype: str
+        """
+        return platform.system()
+
     def _get_default_config_dir(self):
         """
         Get the default configuration directory based on the platform.
