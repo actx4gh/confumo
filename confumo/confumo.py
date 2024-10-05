@@ -7,7 +7,7 @@ import sys
 
 import yaml
 
-from .singleton_base import SingletonBase
+from confumo.singleton_base import SingletonBase
 
 
 class ConfumoError(Exception):
@@ -41,8 +41,10 @@ class Confumo(SingletonBase):
         self.config_dir = os.path.join(self._get_default_config_dir(), self.app_name)
         self.additional_args = additional_args
 
-        # Initialize self.args and self.config before any attribute access
-        self.args = self._parse_args(additional_args=self.additional_args)
+        if self._instances:
+            self.args = list(self._instances.values())[0].args
+        if not self._instances:
+            self.args = self._parse_args(additional_args=self.additional_args)
         self.config = self._initialize_configuration()
 
     def _get_platform_name(self) -> str:
